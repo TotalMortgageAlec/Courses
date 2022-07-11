@@ -37,6 +37,8 @@ document.addEventListener('keydown', function (e) {
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
 
+/*
+
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -122,3 +124,40 @@ logo.classList.contains('c'); // contains, not includes (arrays)
 // Don't use - overrides all existing classes and only put one class on any element
 // logo.className = 'jonas';
 console.log('Testing dev branch');
+
+*/
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+    const s1coords = section1.getBoundingClientRect();
+    console.log(s1coords);
+
+    console.log(e.target.getBoundingClientRect());
+
+    console.log('Current scroll (X/Y)', window.scrollX, scrollY); // legacy: scrollX/scrollY = pageXOffset/pageYOffset
+
+    console.log(
+        'height/width viewport',
+        document.documentElement.clientHeight,
+        document.documentElement.clientWidth
+    );
+
+    // Scrolling
+
+    // older techniques
+    // window.scrollTo(
+    //     s1coords.left + window.scrollX,
+    //     s1coords.top + window.scrollY
+    // ); // 'top' references the top of the viewport (visible screen)
+
+    // window.scrollTo({
+    //     left: s1coords.left + window.scrollX,
+    //     top: s1coords.top + window.scrollY,
+    //     behavior: 'smooth',
+    // });
+
+    // new technique, only works on modern browsers
+    section1.scrollIntoView({ behavior: 'smooth' }); // modern method
+});
