@@ -121,3 +121,4 @@ logo.classList.contains('c'); // contains, not includes (arrays)
 
 // Don't use - overrides all existing classes and only put one class on any element
 // logo.className = 'jonas';
+console.log('Testing dev branch');
