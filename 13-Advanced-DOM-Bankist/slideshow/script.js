@@ -154,7 +154,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 // Actual revealing
 allSections.forEach(function (section) {
     sectionObserver.observe(section);
-    // section.classList.add('section--hidden'); //TODO
+    section.classList.add('section--hidden'); //TODO
 });
 
 ////////////////////////////////////////////////////////
@@ -224,7 +224,9 @@ const goToSlide = function (slide) {
         (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
     );
 };
-// 0% 100% 200%
+// 0% 100% 200% 300% ... n%
+// transform nth-child(n)
+// math w/ n
 
 const nextSlide = function () {
     if (curSlide === maxSlide - 3) {
