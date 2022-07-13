@@ -27,9 +27,6 @@ const closeModal = function () {
 
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 
-// for (let i = 0; i < btnsOpenModal.length; i++)               ^^ same result, less concise
-//     btnsOpenModal[i].addEventListener("click", openModal);
-
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
@@ -187,8 +184,6 @@ imgTargets.forEach(img => imgObserver.observe(img));
 ///////////////////////////////////////////////////
 // Slider
 
-// TODO add back slider function
-
 const slider = function () {
     const slides = document.querySelectorAll('.slide');
     const btnLeft = document.querySelector('.slider__btn--left');
@@ -199,24 +194,6 @@ const slider = function () {
     const maxSlide = slides.length;
 
     // Functions
-    // const createDots = function () {
-    //     slides.forEach(function (_, i) {
-    //         dotContainer.insertAdjacentHTML(
-    //             'beforeend',
-    //             `<button class="dots__dot" data-slide="${i}"></button>`
-    //         );
-    //     });
-    // };
-
-    // const activateDot = function (slide) {
-    //     document
-    //         .querySelectorAll('.dots__dot')
-    //         .forEach(dot => dot.classList.remove('dots__dot--active'));
-
-    //     document
-    //         .querySelector(`.dots__dot[data-slide="${slide}"]`)
-    //         .classList.add('dots__dot--active');
-    // };
 
     const goToSlide = function (slide) {
         slides.forEach(
@@ -235,7 +212,6 @@ const slider = function () {
         }
 
         goToSlide(curSlide);
-        // activateDot(curSlide);
     };
 
     const prevSlide = function () {
@@ -246,7 +222,6 @@ const slider = function () {
         }
 
         goToSlide(curSlide);
-        // activateDot(curSlide);
     };
 
     const autoScroll = function () {
@@ -256,27 +231,17 @@ const slider = function () {
     };
 
     const init = function () {
-        // createDots();
-        // activateDot(0);
         goToSlide(0);
     };
 
     // initialize
     init();
     autoScroll();
-    //TODO
 
     //////////////////////////////////////////////////////
     // Event Handlers
 
     // Next slide
-
-    //TODO disabling buttons
-    /*
-btnRight.addEventListener('click', nextSlide);
-
-btnLeft.addEventListener('click', prevSlide);
-*/
 
     // Slide with arrow keys
     document.addEventListener('keydown', function (e) {
