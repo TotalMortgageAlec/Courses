@@ -201,54 +201,54 @@ imgTargets.forEach(img => imgObserver.observe(img));
 ///////////////////////////////////////////////////
 // Slider
 
-const slider = function () {
-    const slides = document.querySelectorAll('.slide');
+// const slider = function () {
+//     const slides = document.querySelectorAll('.slide');
 
-    let curSlide = 0;
-    const maxSlide = slides.length;
+//     let curSlide = 0;
+//     const maxSlide = slides.length;
 
-    // Functions
+//     // Functions
 
-    const goToSlide = function (slide) {
-        slides.forEach(
-            (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
-        );
-    };
-    // 0% 100% 200%
+//     const goToSlide = function (slide) {
+//         slides.forEach(
+//             (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
+//         );
+//     };
+//     // 0% 100% 200%
 
-    const nextSlide = function () {
-        if (curSlide === maxSlide - 3) {
-            curSlide = 0;
-        } else {
-            curSlide++;
-        }
+//     const nextSlide = function () {
+//         if (curSlide === maxSlide - 3) {
+//             curSlide = 0;
+//         } else {
+//             curSlide++;
+//         }
 
-        goToSlide(curSlide);
-    };
+//         goToSlide(curSlide);
+//     };
 
-    const prevSlide = function () {
-        if (curSlide === 0) {
-            curSlide = maxSlide - 1;
-        } else {
-            curSlide--;
-        }
+//     const prevSlide = function () {
+//         if (curSlide === 0) {
+//             curSlide = maxSlide - 1;
+//         } else {
+//             curSlide--;
+//         }
 
-        goToSlide(curSlide);
-    };
+//         goToSlide(curSlide);
+//     };
 
-    const autoScroll = function () {
-        setInterval(function () {
-            nextSlide();
-        }, 2000);
-    };
+//     const autoScroll = function () {
+//         setInterval(function () {
+//             nextSlide();
+//         }, 2000);
+//     };
 
-    const init = function () {
-        goToSlide(0);
-    };
+//     const init = function () {
+//         goToSlide(0);
+//     };
 
-    // initialize
-    init();
-    autoScroll();
-};
+//     // initialize
+//     init();
+//     autoScroll();
+// };
 
-slider();
+// slider();

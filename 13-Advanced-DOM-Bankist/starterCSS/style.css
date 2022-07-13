@@ -372,30 +372,60 @@ h4 {
     fill: var(--color-tertiary);
 }
 
+#section--3 {
+    overflow-x: hidden;
+}
 /* SLIDER */
 .slider {
     /* max-width: 100rem; */
-    height: 50rem;
-    margin: 0 auto;
-    position: relative;
+    width: 200%;
 
     /* IN THE END */
     overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    animation: 3s ease-in 1s 2 reverse both paused slide-in;
+
+    /* :nth-child(1){
+        0% {left:0px;top:0px;}
+        100% {left:0px;top:0px;}
+    }
+    :nth-child(2){
+        0% {left:0px;top:0px;}
+        100% {left:33.33%;top:0px;}
+    } */
+    /* animation: autoscroll 4s infinite; */
+}
+.slide {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+    /* animation-name: autoscroll;
+    animation-duration: 4s; */
 }
 
 .slide {
-    padding: 20px;
-    position: absolute;
-    top: 0;
-    width: 33.33%;
-    height: 50rem;
+    /* padding: 20px; */
+    /* position: absolute;
+    top: 0; */
+    height: auto;
+    width: 12%;
+}
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /* THIS creates the animation! */
-    transition: transform 1s;
+@keyframes autoscroll {
+    0% {
+        left: 100%;
+        top: 0px;
+    }
+    100% {
+        left: 0%;
+        top: 0px;
+    }
 }
 
 .slide > img {
