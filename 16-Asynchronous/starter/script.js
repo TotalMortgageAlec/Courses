@@ -359,6 +359,8 @@ Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
 // btn.addEventListener('click', whereAmI);
 
+/*
+
 ////////////////////////////////////////////////////
 // Coding Challenge 2
 
@@ -406,3 +408,106 @@ createImage('img/img-1.jpg')
         currentImg.style.display = 'none';
     })
     .catch(err => console.error(err));
+
+*/
+
+/*
+
+/////////////////////////////////////////////////
+// Async/Await: Consuming Promises Better
+
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+};
+
+// fetch(`https://restcountries.com/v2/name/${country}`).then(res => console.log(res))
+
+const whereAmI = async function () {
+    try {
+        // Geolocation
+        const pos = await getPosition();
+        const { latitude: lat, longitude: lng } = pos.coords;
+
+        // Reverse geocoding
+        const resGeo = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+        );
+        if (!resGeo.ok) throw new Error('Problem getting location data');
+        const dataGeo = await resGeo.json();
+
+        // Country data
+        const res = await fetch(
+            `https://restcountries.com/v2/name/${dataGeo.countryName}`
+        );
+        if (!res.ok) throw new Error('Problem getting country');
+        const [data] = await res.json();
+        renderCountry(data);
+
+        return `You are in ${dataGeo.city}, ${dataGeo.countryName}`;
+    } catch (err) {
+        console.error(`${err} 💥`);
+        renderError(`💥 ${err.message}`);
+
+        // Reject promise returned from async function
+        throw err;
+    }
+};
+
+console.log('1: Will get location');
+// const city = whereAmI();
+// console.log(city);
+
+// whereAmI()
+//     .then(city => console.log(`2: ${city}`))
+//     .catch(err => console.error(`2: ${err.message} 💥`))
+//     .finally(() => console.log('3: Finished getting location'));
+
+(async function () {
+    try {
+        const city = await whereAmI();
+        console.log(`2: ${city}`);
+    } catch {
+        console.error(`2: ${err.message} 💥`);
+    }
+    console.log('3: Finished getting location');
+})();
+
+*/
+
+/*
+
+/////////////////////////////////////////////////////
+// Running promises in parallel
+
+const get3Countries = async function (c1, c2, c3) {
+    try {
+        // const [data1] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c1}`
+        // );
+        // const [data2] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c2}`
+        // );
+        // const [data3] = await getJSON(
+        //     `https://restcountries.com/v2/name/${c3}`
+        // );
+
+        const data = await Promise.all([
+            getJSON(`https://restcountries.com/v2/name/${c1}`),
+            getJSON(`https://restcountries.com/v2/name/${c2}`),
+            getJSON(`https://restcountries.com/v2/name/${c3}`),
+        ]);
+        console.log(data);
+        console.log(data.map(d => d[0].capital));
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+get3Countries('portugal', 'france', 'italy');
+
+*/
+
+////////////////////////////////////////
+// Other Promise Combinators
