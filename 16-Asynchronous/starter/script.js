@@ -309,55 +309,55 @@ Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
 // Promisifying
 
-// navigator.geolocation.getCurrentPosition(
-//     position => console.log(position),
-//     err => console.error(err)
-// );
+navigator.geolocation.getCurrentPosition(
+    position => console.log(position),
+    err => console.error(err)
+);
 
-// console.log('Getting position...');
+console.log('Getting position...');
 
-// const getPosition = function () {
-//     return new Promise(function (resolve, reject) {
-//         // navigator.geolocation.getCurrentPosition(
-//         //     position => resolve(position),
-//         //     err => reject(err)
-//         // );
-//         navigator.geolocation.getCurrentPosition(resolve, reject);
-//     });
-// };
+const getPosition = function () {
+    return new Promise(function (resolve, reject) {
+        // navigator.geolocation.getCurrentPosition(
+        //     position => resolve(position),
+        //     err => reject(err)
+        // );
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+};
 
-// getPosition().then(pos => console.log(pos));
+getPosition().then(pos => console.log(pos));
 
-// const whereAmI = function () {
-//     getPosition()
-//         .then(pos => {
-//             const { latitude: lat, longitude: lng } = pos.coords;
-//             return fetch(
-//                 `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
-//             );
-//         })
-//         .then(res => {
-//             if (!res.ok)
-//                 throw new Error(`Problem with geocoding ${res.status}`);
-//             return res.json();
-//         })
-//         .then(data => {
-//             console.log(data);
-//             console.log(`You are in ${data.city}, ${data.countryName}`);
-//             return fetch(
-//                 `https://restcountries.com/v2/name/${data.countryName}`
-//             );
-//         })
-//         .then(res => {
-//             if (!res.ok) throw new Error(`Country not found (${res.status})`);
+const whereAmI = function () {
+    getPosition()
+        .then(pos => {
+            const { latitude: lat, longitude: lng } = pos.coords;
+            return fetch(
+                `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}`
+            );
+        })
+        .then(res => {
+            if (!res.ok)
+                throw new Error(`Problem with geocoding ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            console.log(data);
+            console.log(`You are in ${data.city}, ${data.countryName}`);
+            return fetch(
+                `https://restcountries.com/v2/name/${data.countryName}`
+            );
+        })
+        .then(res => {
+            if (!res.ok) throw new Error(`Country not found (${res.status})`);
 
-//             return res.json();
-//         })
-//         .then(data => renderCountry(data[0]))
-//         .catch(err => console.error(`${err.message} 💥`));
-// };
+            return res.json();
+        })
+        .then(data => renderCountry(data[0]))
+        .catch(err => console.error(`${err.message} 💥`));
+};
 
-// btn.addEventListener('click', whereAmI);
+btn.addEventListener('click', whereAmI);
 
 /*
 
@@ -411,6 +411,7 @@ createImage('img/img-1.jpg')
 
 */
 
+// TODO
 /*
 
 /////////////////////////////////////////////////
@@ -474,6 +475,7 @@ console.log('1: Will get location');
     console.log('3: Finished getting location');
 })();
 
+// TODO
 */
 
 /*
@@ -564,6 +566,8 @@ Promise.any([
 
 */
 
+/*
+
 //////////////////////////////////////////////////////
 // Coding Challenge 3
 
@@ -646,3 +650,5 @@ const loadAll = async function (imgArr) {
 };
 
 loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
+
+*/
